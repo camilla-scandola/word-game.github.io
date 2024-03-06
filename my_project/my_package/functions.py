@@ -59,14 +59,7 @@ def latin_to_hiragana(jpword):
     if latin == 'n':
         hiragana = hiragana + hiragana_dictionary['n']
     return hiragana
-
-
-jpword = 'haru'
-
-result = latin_to_hiragana(jpword)
-
-print(result)
-
+    
 
 def english_translation(jpword):
 
@@ -83,9 +76,3 @@ def english_translation(jpword):
         hiragana_and_english = f'{hiraganaword}, {enword}'
 
         return hiragana_and_english
-
-jpword = 'sora'
-
-result = english_translation(jpword)
-
-print(result)
