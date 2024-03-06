@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap">
+    <style>
+        body {
+            background-color: black;
+            color: #e1cfff;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {color: #e1cfff;
+            font-family: 'Monomaniac One', sans-serif;
+            margin: 0;
+            padding: 0;
+        }    
+        .container {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: url('/Users/camillascandola/Desktop/word_game/templates/Word Game Image.png') no-repeat;
+            background-size: cover; /* Fill the entire button without stretching */
+            border: none;
+            color: white;
+            width: 75px; /* Set the width in pixels */
+            height: 53px; /* Set the height in pixels */
+            padding: 10px; /* Adjust padding for proper alignment */
+        }
+        .btn-primary:hover {
+            background: url('/Users/camillascandola/Desktop/word_game/templates/Word Game Image.png') no-repeat;
+            background-size: cover;
+            background-color: #333; /* Darker background on hover */
+            filter: brightness(80%);
+        }
+        .result-arrow {
+            display: inline-block;
+            margin-right: 5px;
+            color: #4E3FB4;
+        }
+
+        /* Fixed width for text boxes */
+        input.form-control {
+            width: 150px;
+        }
+        /* Add margin-bottom to create separation between output and explanation */
+        .mt-2 {
+        margin-bottom: 20px;
+        }
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+            .btn-primary {
+                margin-top: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1><b>Hiragana Word Game</b></h1>
+
+        <p>こんにちは! This is a word game built in Python on the Japanese alphabet of Hiragana. In a nutshell, Hiragana is an alphabet based on syllables - it combines vowels with consonants, where the consonants are paired with each vowel, and each set corresponds to a specific symbol. For example, *word game* (kotoba asobi) would be 言葉遊び, but it could also be broken down into individual syllables and written as ことばあそび. Note how the last symbol is the same in both variations. That’s because in Japanese, a lot of words and expressions are actually a mix of Kanji and Hiragana. In the following word game, I have created a dictionary of two-syllable words in Japanese, their corresponding Hiragana version and translation in English. For example, haru = はる 🌸 (spring)
+
+            This word game includes five different functions, and it helps you figure these words out on your own:</p>
+        
+        <!-- Form for Function 1 -->
+        <form action="/" method="post">
+            <input type="hidden" name="action" value="function1">
+            <h4>1) This function checks whether a syllable exists in the Hiragana dictionary</h4>
+            <p>The input string should be a syllable that combines a consonant with a vowel - or be solely a vowel.</p>
+
+                <p>*There is one exception in the Hiragana alphabet - the *n* character is the only consonant which can **also** be an independent, non-syllabic character</p>
+                
+                <p>*Note that some syllables are phonetically adapted when transcribed into Latin letters - for example, “tu” is actually “tsu”, “ti” would be “chi” and “si” would be “shi”</p>
+            <label for="function1Input">Input:</label>
+            <input type="text" id="function1Input" name="function1Input" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2"></button>
+            <!-- Display the result for Function 1 right below the button with arrow -->
+            <div id="resultFunction1" class="mt-2">{{result1}}</div>
+        </form>
+
+        <!-- Form for Function 2 -->
+        <form action="/" method="post">
+            <input type="hidden" name="action" value="function2">
+            <h4>2) This function checks whether a word exists in Japanese</h4>
+            <p>The input string should be a combination of two existing syllables</p>
+            <label for="function2Input">Input:</label>
+            <input type="text" id="function2Input" name="function2Input" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2"></button>
+            <!-- Display the result for Function 2 right below the button with arrow -->
+            <div id="resultFunction1" class="mt-2">{{result2}}</div>
+        </form>
+
+        <!-- Form for Function 3 -->
+        <form action="/" method="post">
+            <input type="hidden" name="action" value="function3">
+            <h4>3) This function returns the Hiragana version of your word</h4>
+            <p>The input string should be an existing two-syllable word in Japanese</p>
+            <label for="function3Input">Input:</label>
+            <input type="text" id="function3Input" name="function3Input" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2"></button>
+            <!-- Display the result for Function 3 right below the button with arrow -->
+            <div id="resultFunction1" class="mt-2">{{result3}}</div>
+        </form>
+        
+        <!-- Form for Function 4 -->
+        <form action="/" method="post">
+            <input type="hidden" name="action" value="function4">
+            <h4>4) This function returns the English translation</h4>
+            <p>The input string should be the same word entered in the previous function</p>
+            <label for="function4Input">Input:</label>
+            <input type="text" id="function5Input" name="function4Input" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2"></button>
+            <!-- Display the result for Function 4 right below the button with arrow -->
+            <div id="resultFunction1" class="mt-2">{{result4}}</div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
